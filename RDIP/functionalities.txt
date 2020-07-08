@@ -1,0 +1,25 @@
+1. By clicking the icon of Experiment,it should display "select language " drop down menu.
+
+2. In that dropdown ,there are 2 options English and Hindi
+
+3.on clicking English ,it should display the instruction "Form a sentence (Declarative or Interrogative or any other type) from the given words
+(select the buttons in proper order)" and also list of words that need to be re arranged in the form of buttons.
+
+
+4.on clicking a  particular button it should be removed from that list and should be displayed in "formed sentence" area accordingly.
+after completing ,there should be 2 options in form of butttons
+ 1.Re-form the sentence 
+ 2.check the correctness of this sentence
+
+5. on clicking Re-form the sentence button, list of words should be reset.
+
+6.on clicking the correctness of this code button ,evaluation of expression should happen and it should return the actual result whether it is right or wrong.
+
+More functionalities which can be added:
+
+1. Under experiment tab: There should be a button to change the given question
+	(i.e, to get a different question)
+
+2. Under quizzes tab: There should be an option to select the correct answer
+	of the question. And it should notify that whether thats the right answer
+	or incorrect.
