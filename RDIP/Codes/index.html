@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
         <title class="custom" id="page-title">Virtual Labs</title>
         <link href="../CSS/style.css" rel="stylesheet">
         <link class="custom" href="../../../src/lab/images/favicon.png" rel="shortcut icon"/>
@@ -12,15 +13,15 @@
             <div class="lab-name">
                 <a href="#">COMPUTATIONAL LINGUISTICS LAB</a>
             </div>
-
+            
             <div class="space"></div>
-
+            
             <div class="navigation">
             <a href="#">Home</a>&gt;<a href="#">Computational Linguistics Lab</a>&gt;<a>Forming Sentences - 2</a></div>
             <div class="content-head">
                 <p>Forming Sentences - 2</p>
                 <div class="container content-body">
-
+                    
                     <div class="links" >                       
                         <a href="#"><img src="../../Libraries/images/introduction.jpg"><p class="hov">INTRODUCTION</p> </a>
                     </div>    
@@ -39,6 +40,7 @@
                     <div class="links" >                          
                         <a href="#"><img src="../../Libraries/images/quizzes.jpg"><p class="hov">QUIZZES</p></a>
                     </div>
+
                     <div>
                     <p>Experiment</p>
                     <select id="select-lang" onchange="selectLanguage();">
@@ -47,18 +49,21 @@
                             <option value="hindi">Hindi</option>
                     </select>
                     </div>
+                   
+
                     <div class="general-text">
-                        <h5 id="sentence-intro"></h5>
-                        <span id="button-select-intro" style="margin-left: 17%;"></span>
+                        <p id="sentence-intro"></p>
+                        <span id="button-select-intro" style="margin-left:17%;"></span>   
                     </div>
-                    <div class="jumbled-words">
+                    <div id="jumbled-words">
 
                     </div>
+
 
                 </div>
             </div>
-
+            
         </div>
         <script src="../JS/script.js"></script>
     </body>
-</html> 
+</html>

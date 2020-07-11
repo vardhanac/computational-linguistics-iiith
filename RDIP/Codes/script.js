@@ -2,14 +2,6 @@ function selectLanguage(){
 
     var language = document.getElementById("select-lang").value;
 
-        if(language==='eng'|| language==='hindi')
-        {
-            document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
-            document.getElementById("button-select-intro").innerHTML="(select the buttons in proper order)";
-            document.getElementById("sentence-intro").style.color="blue";
-            document.getElementById("sentence-intro").style.fontSize="100%";
-            document.getElementById("button-select-intro").style.color="blue";
-        }
         if(language==='eng')
         {
             var english1 = ['John ate an apple before afternoon',
@@ -38,7 +30,7 @@ function selectLanguage(){
                             'the‌ ‌teacher‌ ‌noticed‌ ‌the‌ ‌error‌ ‌after‌ ‌she‌ ‌returned‌ ‌the‌ ‌book‌',
                             'after‌ ‌the‌ ‌teacher‌ ‌returned‌ ‌the‌ ‌book‌ ‌she‌ ‌noticed‌ ‌the‌ ‌error‌',
                             'after‌ ‌the‌ ‌teacher‌ ‌noticed‌ ‌the‌ ‌error‌ ‌she‌ ‌returned‌ ‌the‌ ‌book‌',
-                            'she‌ ‌returned‌ ‌the‌ ‌book‌ ‌after‌ ‌the‌ ‌teacher‌ ‌noticed‌ ‌the‌ ‌error‌ ',
+                            'she‌ ‌returned‌ ‌the‌ ‌book‌ ‌after‌ ‌the‌ ‌teacher‌ ‌noticed‌ ‌the‌ ‌error‌',
                             'she‌ ‌noticed‌ ‌the‌ ‌error‌ ‌after‌ ‌the‌ ‌teacher‌ ‌returned‌ ‌the‌ ‌book‌',
                             'after‌ ‌she‌ ‌returned‌ ‌the‌ ‌book‌ ‌the‌ ‌teacher‌ ‌noticed‌ ‌the‌ ‌error‌',
                             'after‌ ‌she‌ ‌noticed‌ ‌the‌ ‌error‌ ‌the‌ ‌teacher‌ ‌returned‌ ‌the‌ ‌book‌'];
@@ -48,13 +40,34 @@ function selectLanguage(){
                              'I‌ ‌bought‌ ‌a‌ ‌book‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌ ‌yesterday‌',
                              'I‌ ‌bought‌ ‌a‌ ‌book‌ ‌yesterday‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌',
                              'yesterday‌ ‌I‌ ‌bought‌ ‌a‌ ‌book‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌'];
-        //array with all 10 different english sentences
+        
         var allEnglish = [english1,english2,english3,english4,english5,english6,english7,english8,english9,english10];
 
+        
+        document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
+        
+        document.getElementById("button-select-intro").innerHTML="(select the buttons in proper order)";
+        document.getElementById("sentence-intro").style.color="blue";
+        document.getElementById("sentence-intro").style.fontSize="100%";
+        document.getElementById("button-select-intro").style.color="blue";
+        
+        
+        var randomEnglish = allEnglish[Math.floor(Math.random() * allEnglish.length)];
+
+        var randomEnglishSentence = randomEnglish[Math.floor(Math.random() * randomEnglish.length)];
+        
+        var words=randomEnglishSentence.split(" ");
+        var i=0,l=0;
+        l = words.length
+        document.getElementById("jumbled-words").innerHTML=" "
+        for(i=0;i<l;i++)
+        {
+            document.getElementById("jumbled-words").innerHTML += "<button id='btn'>"+words[i]+"</button>";
         }
 
+        }
         else if(language==='hindi')
-        {        //all multiple correct hindi sentences with 7 different sentences
+        {        
             var hindi1 = ['राम‌ ‌और‌ ‌श्याम‌ ‌बाजार‌ ‌गयें‌',
                         'राम‌ ‌और‌ ‌श्याम‌ ‌गयें‌ ‌बाजार‌',
                         'बाजार‌ ‌गयें‌ ‌राम‌ ‌और‌ ‌श्याम‌',
@@ -101,9 +114,27 @@ function selectLanguage(){
                         'वहाँ‌ ‌है‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌',
                         '‌है‌ ‌वहाँ‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
                         'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'];
-        //array with all 7 different hindi sentences
-            var allHindi = [hindi1,hindi2,hindi3,hindi4,hindi5,hindi6,hindi7];
 
+                    var allHindi = [hindi1,hindi2,hindi3,hindi4,hindi5,hindi6,hindi7];
+                
+                document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
+                document.getElementById("button-select-intro").innerHTML="(select the buttons in proper order)";
+                document.getElementById("sentence-intro").style.color="blue";
+                document.getElementById("sentence-intro").style.fontSize="100%";
+                document.getElementById("button-select-intro").style.color="blue";
+
+                var randomHindi = allHindi[Math.floor(Math.random() * allHindi.length)];
+
+                var randomHindiSentence = randomHindi[Math.floor(Math.random() * randomHindi.length)];
+                
+                var words=randomHindiSentence.split(" ");
+                var i=0,l=0;
+                l = words.length
+                document.getElementById("jumbled-words").innerHTML=" "
+                for(i=0;i<l;i++)
+                {
+                    document.getElementById("jumbled-words").innerHTML += "<button id='btn'>"+words[i]+"</button>";
+                }
         }
         else
         {
