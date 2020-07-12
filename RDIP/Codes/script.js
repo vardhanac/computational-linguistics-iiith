@@ -1,3 +1,4 @@
+var reformButtons;
 function selectLanguage(){
 
     var language = document.getElementById("select-lang").value;
@@ -69,6 +70,7 @@ function selectLanguage(){
                 document.getElementById("selectedWord").innerHTML ="";
                 document.getElementById("reformButton").innerHTML = "";
             }    
+            reformButtons=document.getElementById("jumbled-words").innerHTML ;
         }
         else if(language==='hindi')
         {        
@@ -140,7 +142,9 @@ function selectLanguage(){
                     console.log(words[i]);
                     document.getElementById("msgFormedSentence").innerHTML="";
                     document.getElementById("selectedWord").innerHTML ="";
-                    document.getElementById("reformButton").innerHTML = "";                }
+                    document.getElementById("reformButton").innerHTML = "";   
+                }
+                reformButtons=document.getElementById("jumbled-words").innerHTML;                 
         }
         else
         {
@@ -155,7 +159,18 @@ function Bfunction(bid,bvalue)
             document.getElementById("msgFormedSentence").innerHTML="Formed Sentence <span>(after selecting words):</span>";
             document.getElementById("selectedWord").innerHTML +=" "+bvalue;
             document.getElementById(bid).style.display="none";
-            document.getElementById("reformButton").innerHTML = "<button class='reform' id='reform'> Re-form the sentence</button>";
+            document.getElementById("reformButton").innerHTML = "<button class='reform' id='reform' onclick='reform()'> Re-form the sentence</button>";
 
 
         }
+    function reform()
+    {
+
+        document.getElementById("jumbled-words").innerHTML = reformButtons;
+        document.getElementById("msgFormedSentence").innerHTML="";
+        document.getElementById("selectedWord").innerHTML ="";
+        document.getElementById("reformButton").innerHTML = "";
+
+
+    }        
+    
