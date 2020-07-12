@@ -1,11 +1,11 @@
-html {
+html{
     height: 100%;
 }
 body{
     background-color:  hsla(199, 100%, 11%, 0.961);
     padding-top: 0%;
     overflow: hidden;
-    min-height: 100%;
+    min-height: 100%;  
 }
 
 p {
@@ -45,6 +45,7 @@ p {
  }
  .content-head{
      background-color: #c2d7da;
+     
      overflow: scroll;
      overflow-x: hidden;
      margin: 0% -0.3%; 
@@ -59,12 +60,13 @@ p {
     margin:0%;
  }
 
+ 
  .content-body{
      background-color: white;
      width: 95%;
      padding:1%;
-     margin: 0 auto;
-     position: relative;
+      margin: 0 auto;
+      position: relative;
      
  }
  
@@ -84,6 +86,7 @@ p {
      text-decoration: underline;
 
  }
+ 
  
  .links:hover>a>p{
     background-color: rgb(16, 16, 119);
@@ -107,23 +110,24 @@ p {
     margin: 0% 16%;
     padding:0%;
  }
-  #sentence-intro{
+ #sentence-intro{
     font-weight: 600;
 
  }
- #jumbled-words,#selectedWord,#reformButton{
+ 
+ #jumbled-words,#selectedWord,#reformButton,#check-correctness{
      text-align: center;
-     margin-top: 5%;
+     margin-top: 2%;
  }
  #selectedWord{
      font-size: 200%;
      color:rgb(66, 62, 62);
  }
- #btn{
+ .btn{
      margin-right: 2%;
      
  }
-  #msgFormedSentence{
+ #msgFormedSentence{
      margin-top: 2%;
      text-align: center;
      color:rgb(41, 41, 196);
