@@ -292,6 +292,8 @@ function selectLanguage(){
 
     }
 
+        var answers="";
+
         function check()
     {
         var result= selectedSentence.trim();
@@ -308,12 +310,13 @@ function selectLanguage(){
             else{
                 document.getElementById("wrong").innerHTML="Wrong Answer !!!";
                 document.getElementById("correct").innerHTML="";
-                document.getElementById("showAnswer").innerHTML="<button id='show'>Get Correct Answer</button>"
+                document.getElementById("showAnswer").innerHTML="<button id='show' onclick='show(this.id)'>Get Correct Sentence</button>"
 
             }
         }
         else if(language=='hindi')
-        {var i=0;
+        {
+            var i=0;
             result=result.trim();
             console.log(result)
             for(i=0;i<hindiALL.length;i++)
@@ -336,8 +339,47 @@ function selectLanguage(){
             else{
                 document.getElementById("wrong").innerHTML="Wrong Answer!!!";
                 document.getElementById("correct").innerHTML="";
-                document.getElementById("showAnswer").innerHTML="<button id='show'>Get Correct Answer</button>"
+                document.getElementById("showAnswer").innerHTML="<button id='getCorrectSentence' onclick='show(this.id)'>Get Correct Sentence</button>"
 
             }
+        }
+            function show(id)
+    {   var i=0;
+        document.getElementById(id).style.display="none";
+        document.getElementById("showAnswer").innerHTML="<button id='hide' onclick='toggle()'>Hide the Correct Sentences</button>"; 
+        answers="";
+        if(language=="eng")
+        {
+            var l=randomEnglish.length;
+
+            for(i=0;i<l;i++)
+            {  
+                console.log(randomEnglish[i])
+                document.getElementById("showAnswer").innerHTML+="<p>"+randomEnglish[i]+"</p><br>";
+                answers+="<p>"+randomEnglish[i]+"</p><br>";
+            }   
+        }
+        if(language=="hindi")
+        {var i=0;
+            for(i=0;i<randomHindi.length;i++)
+            {
+                console.log(randomHindi[i])
+                document.getElementById("showAnswer").innerHTML+="<p>"+randomHindi[i]+"</p><br>";
+                answers+="<p>"+randomHindi[i]+"</p><br>";  
+            }
+        }
+
+    }
+    function toggle()
+    {
+        if(document.getElementById("hide").innerHTML=='Hide the Correct Sentences')
+        { 
+            document.getElementById("showAnswer").innerHTML="";
+            document.getElementById("showAnswer").innerHTML="<button id='hide' onclick='toggle()'>Get Answers</button>";
+        }
+        else
+        {
+            document.getElementById("showAnswer").innerHTML+=answers;
+            document.getElementById("hide").innerHTML="Hide the Correct Sentences";    
         }
     }
