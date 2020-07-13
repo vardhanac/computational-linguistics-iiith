@@ -1,13 +1,13 @@
-//selecting language value
+var language;
 var reformButtons;
 var wordcount=0;
 var count=0;
-function selectLanguage(){
-
-    var language = document.getElementById("select-lang").value;
-
-        if(language==='eng')
-        {
+var allEnglish=[];
+var allHindi=[];
+var randomEnglishSentence;
+var randomHindiSentence;
+var randomEnglish;
+var randomHindi;
 
             var english1 = ['John ate an apple before afternoon',
                             'before afternoon John ate an apple',
@@ -46,15 +46,119 @@ function selectLanguage(){
                              'I‌ ‌bought‌ ‌a‌ ‌book‌ ‌yesterday‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌',
                              'yesterday‌ ‌I‌ ‌bought‌ ‌a‌ ‌book‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌'];
 
+                var hindi1 = ['राम‌ ‌और‌ ‌श्याम‌ ‌बाजार‌ ‌गयें‌',
+                    'राम‌ ‌और‌ ‌श्याम‌ ‌गयें‌ ‌बाजार‌',
+                    'बाजार‌ ‌गयें‌ ‌राम‌ ‌और‌ ‌श्याम‌',
+                    'गयें‌ ‌बाजार‌ ‌राम‌ ‌और‌ ‌श्याम‌'];
+                var hindi2 = ['राम‌ ‌सोया‌ ‌और‌ ‌श्याम‌ ‌भी‌',
+                    'श्याम‌ ‌सोया‌ ‌और‌ ‌राम‌ ‌भी‌',
+                    'सोया‌ ‌श्याम‌ ‌और‌ ‌राम‌ ‌भी‌',
+                    'सोया‌ ‌राम‌ ‌और‌ ‌श्याम‌ ‌भी‌'];
+                var hindi3 = ['मैंने‌ ‌उसे‌ ‌बताया‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'मैंने‌ ‌उसे‌ ‌बताया‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'उसे‌ ‌मैंने‌ ‌बताया‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'उसे‌ ‌मैंने‌ ‌बताया‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'मैंने‌ ‌बताया‌ ‌उसे‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'मैंने‌ ‌बताया‌ ‌उसे‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'उसे‌ ‌बताया‌ ‌मैंने‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'उसे‌ ‌बताया‌ ‌मैंने‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'बताया‌ ‌मैंने‌ ‌उसे‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'बताया‌ ‌मैंने‌ ‌उसे‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'बताया‌ ‌उसे‌ ‌मैंने‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'बताया‌ ‌उसे‌ ‌मैंने‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌'];
+                var hindi4 = ['राम‌ ‌खाकर‌ ‌सोया‌',
+                    'खाकर‌ ‌राम‌ ‌सोया‌',
+                    'राम‌ ‌सोया‌ ‌खाकर‌',
+                    'खाकर‌ ‌सोया‌ ‌राम‌',
+                    'सोया‌ ‌राम‌ ‌खाकर‌',
+                    'सोया‌ ‌खाकर‌ ‌राम‌'];
+                var hindi5 = ['बिल्लियों‌ ‌को‌ ‌मारकर‌ ‌कुत्ता‌ ‌सो‌ ‌गया‌',
+                    'मारकर‌ ‌बिल्लियों‌ ‌को‌ ‌कुत्ता‌ ‌सो‌ ‌गया',
+                    'बिल्लियों‌ ‌को‌ ‌मारकर‌ ‌सो‌ ‌गया‌ ‌कुत्ता‌',
+                    'मारकर‌ ‌बिल्लियों‌ ‌को‌ ‌सो‌ ‌गया‌ ‌कुत्ता‌',
+                    'कुत्ता‌ ‌सो‌ ‌गया‌ ‌बिल्लियों‌ ‌को‌ ‌मारकर‌',
+                    'कुत्ता‌ ‌सो‌ ‌गया‌ ‌मारकर‌ ‌बिल्लियों‌ ‌को‌',
+                    'सो‌ ‌गया‌ ‌कुत्ता‌ ‌बिल्लियों‌ ‌को‌ ‌मारकर',
+                    'सो‌ ‌गया‌ ‌कुत्ता‌ ‌मारकर‌ ‌बिल्लियों‌ ‌को‌'];
+                var hindi6 = ['एक‌ ‌लाल‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
+                    'एक‌ ‌लाल‌ ‌किताब‌ ‌है‌ ‌वहाँ‌',
+                    'वहाँ‌ ‌है‌ ‌एक‌ ‌लाल‌ ‌किताब',
+                    'है‌ ‌वहाँ‌ ‌एक‌ ‌लाल‌ ‌किताब'];
+                var hindi7 = ['एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
+                    'एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌ ‌है‌ ‌वहाँ‌',
+                    'बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
+                    '‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌ ‌है‌ ‌वहाँ',
+                    'वहाँ‌ ‌है‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
+                    'वहाँ‌ ‌है‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌',
+                    '‌है‌ ‌वहाँ‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
+                    'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'];
+        var hindiALL=[
+                    'राम‌ ‌और‌ ‌श्याम‌ ‌बाजार‌ ‌गयें‌',
+                    'राम‌ ‌और‌ ‌श्याम‌ ‌गयें‌ ‌बाजार‌',
+                    'बाजार‌ ‌गयें‌ ‌राम‌ ‌और‌ ‌श्याम‌',
+                    'गयें‌ ‌बाजार‌ ‌राम‌ ‌और‌ ‌श्याम‌',
+                    'राम‌ ‌सोया‌ ‌और‌ ‌श्याम‌ ‌भी‌',
+                    'श्याम‌ ‌सोया‌ ‌और‌ ‌राम‌ ‌भी‌',
+                    'सोया‌ ‌श्याम‌ ‌और‌ ‌राम‌ ‌भी‌',
+                    'सोया‌ ‌राम‌ ‌और‌ ‌श्याम‌ ‌भी‌',
+                    'मैंने‌ ‌उसे‌ ‌बताया‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'मैंने‌ ‌उसे‌ ‌बताया‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'उसे‌ ‌मैंने‌ ‌बताया‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'उसे‌ ‌मैंने‌ ‌बताया‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'मैंने‌ ‌बताया‌ ‌उसे‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'मैंने‌ ‌बताया‌ ‌उसे‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'उसे‌ ‌बताया‌ ‌मैंने‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'उसे‌ ‌बताया‌ ‌मैंने‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'बताया‌ ‌मैंने‌ ‌उसे‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'बताया‌ ‌मैंने‌ ‌उसे‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'बताया‌ ‌उसे‌ ‌मैंने‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
+                    'बताया‌ ‌उसे‌ ‌मैंने‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
+                    'राम‌ ‌खाकर‌ ‌सोया‌',
+                    'खाकर‌ ‌राम‌ ‌सोया‌',
+                    'राम‌ ‌सोया‌ ‌खाकर‌',
+                    'खाकर‌ ‌सोया‌ ‌राम‌',
+                    'सोया‌ ‌राम‌ ‌खाकर‌',
+                    'सोया‌ ‌खाकर‌ ‌राम‌',
+                    'बिल्लियों‌ ‌को‌ ‌मारकर‌ ‌कुत्ता‌ ‌सो‌ ‌गया‌',
+                    'मारकर‌ ‌बिल्लियों‌ ‌को‌ ‌कुत्ता‌ ‌सो‌ ‌गया',
+                    'बिल्लियों‌ ‌को‌ ‌मारकर‌ ‌सो‌ ‌गया‌ ‌कुत्ता‌',
+                    'मारकर‌ ‌बिल्लियों‌ ‌को‌ ‌सो‌ ‌गया‌ ‌कुत्ता‌',
+                    'कुत्ता‌ ‌सो‌ ‌गया‌ ‌बिल्लियों‌ ‌को‌ ‌मारकर‌',
+                    'कुत्ता‌ ‌सो‌ ‌गया‌ ‌मारकर‌ ‌बिल्लियों‌ ‌को‌',
+                    'सो‌ ‌गया‌ ‌कुत्ता‌ ‌बिल्लियों‌ ‌को‌ ‌मारकर',
+                    'सो‌ ‌गया‌ ‌कुत्ता‌ ‌मारकर‌ ‌बिल्लियों‌ ‌को‌',
+                    'एक‌ ‌लाल‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
+                    'एक‌ ‌लाल‌ ‌किताब‌ ‌है‌ ‌वहाँ‌',
+                    'वहाँ‌ ‌है‌ ‌एक‌ ‌लाल‌ ‌किताब',
+                    'है‌ ‌वहाँ‌ ‌एक‌ ‌लाल‌ ‌किताब',
+                    'एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
+                    'एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌ ‌है‌ ‌वहाँ‌',
+                    'बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
+                    '‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌ ‌है‌ ‌वहाँ',
+                    'वहाँ‌ ‌है‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
+                    'वहाँ‌ ‌है‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌',
+                    '‌है‌ ‌वहाँ‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
+                    'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'
+        ]
+
+function selectLanguage(){
+
+     language = document.getElementById("select-lang").value;
+
+        if(language==='eng')
+    {                 
+
 
             document.getElementById("msgFormedSentence").innerHTML="";
             document.getElementById("selectedWord").innerHTML ="";
             document.getElementById("reformButton").innerHTML = "";
             document.getElementById("check-correctness").innerHTML="";
+            document.getElementById("correct").innerHTML="";
+            document.getElementById("wrong").innerHTML="";
             
            
 
-            var allEnglish = [english1,english2,english3,english4,english5,english6,english7,english8,english9,english10];
+            allEnglish = [english1,english2,english3,english4,english5,english6,english7,english8,english9,english10];
 
 
             document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
@@ -65,11 +169,21 @@ function selectLanguage(){
             document.getElementById("sentence-intro").style.fontSize="100%";
             document.getElementById("button-select-intro").style.color="blue";
             
-            var randomEnglish = allEnglish[Math.floor(Math.random() * allEnglish.length)];
+            randomEnglish = allEnglish[Math.floor(Math.random() * allEnglish.length)];
 
-            var randomEnglishSentence = randomEnglish[Math.floor(Math.random() * randomEnglish.length)];
+            randomEnglishSentence = randomEnglish[Math.floor(Math.random() * randomEnglish.length)];
             
-            var words=randomEnglishSentence.split(" ");
+            var arrwords=randomEnglishSentence.split(" ");
+            var words=[];
+            var k=0,m=0;
+            while(arrwords.length>k)
+            { m = Math.floor(Math.random() * arrwords.length);
+                if(arrwords[m]!="no"){
+                words[k]=arrwords[m];
+                arrwords[m]="no";
+                k++;
+                }
+            }
             var i=0;
             count=0;
             wordcount = words.length
@@ -86,60 +200,16 @@ function selectLanguage(){
 
         else if(language==='hindi')
         {        
-            var hindi1 = ['राम‌ ‌और‌ ‌श्याम‌ ‌बाजार‌ ‌गयें‌',
-                        'राम‌ ‌और‌ ‌श्याम‌ ‌गयें‌ ‌बाजार‌',
-                        'बाजार‌ ‌गयें‌ ‌राम‌ ‌और‌ ‌श्याम‌',
-                        'गयें‌ ‌बाजार‌ ‌राम‌ ‌और‌ ‌श्याम‌'];
-            var hindi2 = ['राम‌ ‌सोया‌ ‌और‌ ‌श्याम‌ ‌भी‌',
-                        'श्याम‌ ‌सोया‌ ‌और‌ ‌राम‌ ‌भी‌',
-                        'सोया‌ ‌श्याम‌ ‌और‌ ‌राम‌ ‌भी‌',
-                        'सोया‌ ‌राम‌ ‌और‌ ‌श्याम‌ ‌भी‌'];
-            var hindi3 = ['मैंने‌ ‌उसे‌ ‌बताया‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
-                        'मैंने‌ ‌उसे‌ ‌बताया‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
-                        'उसे‌ ‌मैंने‌ ‌बताया‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
-                        'उसे‌ ‌मैंने‌ ‌बताया‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
-                        'मैंने‌ ‌बताया‌ ‌उसे‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
-                        'मैंने‌ ‌बताया‌ ‌उसे‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
-                        'उसे‌ ‌बताया‌ ‌मैंने‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
-                        'उसे‌ ‌बताया‌ ‌मैंने‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
-                        'बताया‌ ‌मैंने‌ ‌उसे‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
-                        'बताया‌ ‌मैंने‌ ‌उसे‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌',
-                        'बताया‌ ‌उसे‌ ‌मैंने‌ ‌कि‌ ‌राम‌ ‌सो‌ ‌रहा‌ ‌है‌',
-                        'बताया‌ ‌उसे‌ ‌मैंने‌ ‌कि‌ ‌सो‌ ‌रहा‌ ‌है‌ ‌राम‌'];
-            var hindi4 = ['राम‌ ‌खाकर‌ ‌सोया‌',
-                        'खाकर‌ ‌राम‌ ‌सोया‌',
-                        'राम‌ ‌सोया‌ ‌खाकर‌',
-                        'खाकर‌ ‌सोया‌ ‌राम‌',
-                        'सोया‌ ‌राम‌ ‌खाकर‌',
-                        'सोया‌ ‌खाकर‌ ‌राम‌'];
-            var hindi5 = ['बिल्लियों‌ ‌को‌ ‌मारकर‌ ‌कुत्ता‌ ‌सो‌ ‌गया‌',
-                        'मारकर‌ ‌बिल्लियों‌ ‌को‌ ‌कुत्ता‌ ‌सो‌ ‌गया',
-                        'बिल्लियों‌ ‌को‌ ‌मारकर‌ ‌सो‌ ‌गया‌ ‌कुत्ता‌',
-                        'मारकर‌ ‌बिल्लियों‌ ‌को‌ ‌सो‌ ‌गया‌ ‌कुत्ता‌',
-                        'कुत्ता‌ ‌सो‌ ‌गया‌ ‌बिल्लियों‌ ‌को‌ ‌मारकर‌',
-                        'कुत्ता‌ ‌सो‌ ‌गया‌ ‌मारकर‌ ‌बिल्लियों‌ ‌को‌',
-                        'सो‌ ‌गया‌ ‌कुत्ता‌ ‌बिल्लियों‌ ‌को‌ ‌मारकर',
-                        'सो‌ ‌गया‌ ‌कुत्ता‌ ‌मारकर‌ ‌बिल्लियों‌ ‌को‌'];
-            var hindi6 = ['एक‌ ‌लाल‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
-                        'एक‌ ‌लाल‌ ‌किताब‌ ‌है‌ ‌वहाँ‌',
-                        'वहाँ‌ ‌है‌ ‌एक‌ ‌लाल‌ ‌किताब',
-                        'है‌ ‌वहाँ‌ ‌एक‌ ‌लाल‌ ‌किताब'];
-            var hindi7 = ['एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
-                        'एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌ ‌है‌ ‌वहाँ‌',
-                        'बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌ ‌वहाँ‌ ‌है‌',
-                        '‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌ ‌है‌ ‌वहाँ',
-                        'वहाँ‌ ‌है‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
-                        'वहाँ‌ ‌है‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌',
-                        '‌है‌ ‌वहाँ‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
-                        'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'];
-
+        
                  document.getElementById("msgFormedSentence").innerHTML="";
                  document.getElementById("selectedWord").innerHTML ="";
                  document.getElementById("reformButton").innerHTML = "";
                  document.getElementById("check-correctness").innerHTML="";
-                 document.getElementById("jumbled-words").innerHTML=" "
+                 document.getElementById("jumbled-words").innerHTML=" ";
+                 document.getElementById("correct").innerHTML="";
+                 document.getElementById("wrong").innerHTML="";
 
-                    var allHindi = [hindi1,hindi2,hindi3,hindi4,hindi5,hindi6,hindi7];
+                 allHindi = [hindi1,hindi2,hindi3,hindi4,hindi5,hindi6,hindi7];
                 
                 document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
                 
@@ -148,11 +218,22 @@ function selectLanguage(){
                 document.getElementById("sentence-intro").style.fontSize="100%";
                 document.getElementById("button-select-intro").style.color="rgb(41, 41, 196)";
 
-                var randomHindi = allHindi[Math.floor(Math.random() * allHindi.length)];
+                randomHindi = allHindi[Math.floor(Math.random() * allHindi.length)];
 
-                var randomHindiSentence = randomHindi[Math.floor(Math.random() * randomHindi.length)];
+                randomHindiSentence = randomHindi[Math.floor(Math.random() * randomHindi.length)];
                 
-                var words=randomHindiSentence.split(" ");
+                 var arrwords=randomHindiSentence.split(" ");
+                var words=[];
+                var k=0,m=0;
+                while(arrwords.length>k)
+                { 
+                    m = Math.floor(Math.random() * arrwords.length);
+                    if(arrwords[m]!="no"){
+                    words[k]=arrwords[m];
+                    arrwords[m]="no";
+                    k++;
+                    }
+                }
                 var i=0;
                 count=0;
                 wordcount = words.length
@@ -175,19 +256,20 @@ function selectLanguage(){
     function Bfunction(bid,bvalue)
         {
             document.getElementById("msgFormedSentence").innerHTML="Formed Sentence <span>(after selecting words):</span>";
-            document.getElementById("selectedWord").innerHTML +=" "+bvalue;
+            document.getElementById("selectedWord").innerHTML +=bvalue+" ";
             document.getElementById(bid).style.display="none";
             document.getElementById("reformButton").innerHTML = "<button class='reform' id='reform' onclick='reform()'> Re-form the sentence</button>";
             count++;
 
             if(wordcount==count && wordcount>0)
             {
-                document.getElementById("check-correctness").innerHTML="<button id='check'>Check Correctness of the Sentence</button>";
                 selectedSentence = document.getElementById("selectedWord").innerHTML;
+                document.getElementById("check-correctness").innerHTML="<button id='check' onclick='check()'>Check Correctness of the Sentence</button>";                
                 console.log(selectedSentence);
             }
             else{
                 document.getElementById("check-correctness").innerHTML="";   
+
             }
 
 
@@ -200,6 +282,48 @@ function selectLanguage(){
         document.getElementById("reformButton").innerHTML = "";
         count=0;
         document.getElementById("check-correctness").innerHTML="";
+        document.getElementById("correct").innerHTML="";
+        document.getElementById("wrong").innerHTML="";
+    }
 
+        function check()
+    {
+        var result= selectedSentence.trim();
 
+        if(language=='eng')
+        {
+            if (randomEnglish.includes(result))
+            {
+            document.getElementById("correct").innerHTML="Correct Answer!!!";
+            document.getElementById("wrong").innerHTML="";
+            }
+            else{
+                document.getElementById("wrong").innerHTML="Wrong Answer !!!";
+                document.getElementById("correct").innerHTML="";
+            }
+        }
+        else if(language=='hindi')
+        {var i=0;
+            result=result.trim();
+            console.log(result)
+            for(i=0;i<hindiALL.length;i++)
+            { var x=hindiALL[i];
+                if(x.localeCompare(result)==0)
+                {
+                    i=100; 
+                    console.log(i)
+                    break;   
+                }    
+            }
+
+            if(i==100)
+            {
+                document.getElementById("correct").innerHTML="Correct Answer!!!";
+                document.getElementById("wrong").innerHTML="";
+            }
+            else{
+                document.getElementById("wrong").innerHTML="Wrong Answer!!!";
+                document.getElementById("correct").innerHTML="";
+            }
+        }
     }

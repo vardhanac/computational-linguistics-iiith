@@ -136,3 +136,15 @@ p {
  span{
      font-weight: 200;
  }
+ #correct{
+     margin-top: 3%;
+     font-size: 160%;
+     color: green;
+     text-align: center;
+ }
+ #wrong{
+     margin-top: 3%;
+     font-size: 160%;
+     color: red;
+     text-align: center;
+ }
