@@ -9,6 +9,8 @@ var randomHindiSentence;
 var randomEnglish;
 var randomHindi;
 
+
+//all multiple correct english sentences with 10 different questions
             var english1 = ['John ate an apple before afternoon',
                             'before afternoon John ate an apple',
                             'John before afternoon ate an apple'
@@ -23,7 +25,7 @@ var randomHindi;
                             'John after eating went to church'];
             var english5 = ['did he go to market',
                             'he did go to market'];
-            var english6 = ['the womean who called my sister sells cosmetics',
+            var english6 = ['the woman who called my sister sells cosmetics',
                             'the woman who sells cosmetics called my sister',
                             'my sister who sells cosmetics called the woman',
                             'my sister who called the woman sells cosmetics'];
@@ -46,6 +48,7 @@ var randomHindi;
                              'I‌ ‌bought‌ ‌a‌ ‌book‌ ‌yesterday‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌',
                              'yesterday‌ ‌I‌ ‌bought‌ ‌a‌ ‌book‌ ‌that‌ ‌I‌ ‌told‌ ‌her‌'];
 
+ //all multiple correct hindi sentences with 7 different sentences
                 var hindi1 = ['राम‌ ‌और‌ ‌श्याम‌ ‌बाजार‌ ‌गयें‌',
                     'राम‌ ‌और‌ ‌श्याम‌ ‌गयें‌ ‌बाजार‌',
                     'बाजार‌ ‌गयें‌ ‌राम‌ ‌और‌ ‌श्याम‌',
@@ -92,6 +95,7 @@ var randomHindi;
                     'वहाँ‌ ‌है‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌',
                     '‌है‌ ‌वहाँ‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
                     'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'];
+//all hindi strings in one array
         var hindiALL=[
                     'राम‌ ‌और‌ ‌श्याम‌ ‌बाजार‌ ‌गयें‌',
                     'राम‌ ‌और‌ ‌श्याम‌ ‌गयें‌ ‌बाजार‌',
@@ -141,14 +145,14 @@ var randomHindi;
                     'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'
         ]
 
-function selectLanguage(){
+function selectLanguage()
+{
 
      language = document.getElementById("select-lang").value;
 
-        if(language==='eng')
-    {                 
-
-
+    if(language==='eng')
+    {
+            //emptying the fields while switching between languages(english/hindi)
             document.getElementById("msgFormedSentence").innerHTML="";
             document.getElementById("selectedWord").innerHTML ="";
             document.getElementById("reformButton").innerHTML = "";
@@ -159,22 +163,26 @@ function selectLanguage(){
 
             
            
+             //array with all 10 different english sentences
+             allEnglish = [english1,english2,english3,english4,english5,english6,english7,english8,english9,english10];
 
-            allEnglish = [english1,english2,english3,english4,english5,english6,english7,english8,english9,english10];
-
-
+            //printing message --Form a sentence (Declarative or Interrogative or any other type) from the given words
             document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
            
-
+            // printing message "(select the buttons in proper order)"
             document.getElementById("button-select-intro").innerHTML="(select the buttons in proper order)";
             document.getElementById("sentence-intro").style.color="blue";
             document.getElementById("sentence-intro").style.fontSize="100%";
             document.getElementById("button-select-intro").style.color="blue";
             
-            randomEnglish = allEnglish[Math.floor(Math.random() * allEnglish.length)];
+            // randomly accessing 1 english sentence among 10 english sentences
+             randomEnglish = allEnglish[Math.floor(Math.random() * allEnglish.length)];
 
-            randomEnglishSentence = randomEnglish[Math.floor(Math.random() * randomEnglish.length)];
+            //randomly selecting 1 sentence among the correct sentence of same question 
+             randomEnglishSentence = randomEnglish[Math.floor(Math.random() * randomEnglish.length)];
+            //console.log(randomEnglishSentence)
             
+            //randomizing words
             var arrwords=randomEnglishSentence.split(" ");
             var words=[];
             var k=0,m=0;
@@ -186,6 +194,8 @@ function selectLanguage(){
                 k++;
                 }
             }
+
+            //displaying random buttons
             var i=0;
             count=0;
             wordcount = words.length
@@ -196,75 +206,101 @@ function selectLanguage(){
             }
 
 
+            //all the jumbled buttons are stored to display them in same random/jumbled order when reform button is clicked.
              reformButtons=document.getElementById("jumbled-words").innerHTML ;
-        }
+    }
         
 
-        else if(language==='hindi')
-        {        
-        
-                 document.getElementById("msgFormedSentence").innerHTML="";
-                 document.getElementById("selectedWord").innerHTML ="";
-                 document.getElementById("reformButton").innerHTML = "";
-                 document.getElementById("check-correctness").innerHTML="";
-                 document.getElementById("jumbled-words").innerHTML=" ";
-                 document.getElementById("correct").innerHTML="";
-                 document.getElementById("wrong").innerHTML="";
-                 document.getElementById("showAnswer").innerHTML="";
+    else if(language==='hindi')
+    {   
+
+                //emptying the string data while switching between languages(english/hindi)
+                document.getElementById("msgFormedSentence").innerHTML="";
+                document.getElementById("selectedWord").innerHTML ="";
+                document.getElementById("reformButton").innerHTML = "";
+                document.getElementById("check-correctness").innerHTML="";
+                document.getElementById("jumbled-words").innerHTML=" "
+                document.getElementById("correct").innerHTML="";
+                document.getElementById("wrong").innerHTML="";
+                document.getElementById("showAnswer").innerHTML="";
 
 
-                 allHindi = [hindi1,hindi2,hindi3,hindi4,hindi5,hindi6,hindi7];
-                
-                document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
-                
-                document.getElementById("button-select-intro").innerHTML="(select the buttons in proper order)";
-                document.getElementById("sentence-intro").style.color="rgb(41, 41, 196)";
-                document.getElementById("sentence-intro").style.fontSize="100%";
-                document.getElementById("button-select-intro").style.color="rgb(41, 41, 196)";
+            //array with all 7 different hindi sentences
+                    allHindi = [hindi1,hindi2,hindi3,hindi4,hindi5,hindi6,hindi7];
+            
+            //printing message --Form a sentence (Declarative or Interrogative or any other type) from the given words
+            document.getElementById("sentence-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given words";
+            
+            // printing message "(select the buttons in proper order)"
+            document.getElementById("button-select-intro").innerHTML="(select the buttons in proper order)";
+            document.getElementById("sentence-intro").style.color="rgb(41, 41, 196)";
+            document.getElementById("sentence-intro").style.fontSize="100%";
+            document.getElementById("button-select-intro").style.color="rgb(41, 41, 196)";
 
+            // randomly accessing 1 hindi sentence among 7 hindi sentences
                 randomHindi = allHindi[Math.floor(Math.random() * allHindi.length)];
 
+            //randomly selecting 1 sentence among the correct sentence of same question 
                 randomHindiSentence = randomHindi[Math.floor(Math.random() * randomHindi.length)];
-                
-                 var arrwords=randomHindiSentence.split(" ");
-                var words=[];
-                var k=0,m=0;
-                while(arrwords.length>k)
-                { 
-                    m = Math.floor(Math.random() * arrwords.length);
-                    if(arrwords[m]!="no"){
-                    words[k]=arrwords[m];
-                    arrwords[m]="no";
-                    k++;
-                    }
+            //console.log(randomHindiSentence)
+            
+            //randomizing words
+            var arrwords=randomHindiSentence.split(" ");
+            var words=[];
+            var k=0,m=0;
+            while(arrwords.length>k)
+            { m = Math.floor(Math.random() * arrwords.length);
+                if(arrwords[m]!="no"){
+                words[k]=arrwords[m];
+                arrwords[m]="no";
+                k++;
                 }
-                var i=0;
-                count=0;
-                wordcount = words.length
-                
-                for(i=0;i<wordcount;i++)
-                {
-                    document.getElementById("jumbled-words").innerHTML += "<button class='btn' id='btn"+i+"' value='"+words[i]+"' onclick='Bfunction(this.id,this.value);'>"+words[i]+"</button>";
-                }
-                 reformButtons=document.getElementById("jumbled-words").innerHTML;
-                
-        }
-        else
-        {
-            alert("Please Select A Language.");
-        }
+            }
 
-        
-    }
+            //displaying random buttons
+            var i=0;
+            count=0;
+            wordcount = words.length
+            
+            for(i=0;i<wordcount;i++)
+            {
+                document.getElementById("jumbled-words").innerHTML += "<button class='btn' id='btn"+i+"' value='"+words[i]+"' onclick='Bfunction(this.id,this.value);'>"+words[i]+"</button>";
+                //console.log(words[i]);
+            }
+
+            //all the jumbled buttons are stored to display them in same random/jumbled order when reform button is clicked
+                reformButtons=document.getElementById("jumbled-words").innerHTML;
+                
+        }
+    else
+        {
+            // when english or hindi language is not selected then everything will hidden/emptied
+            document.getElementById("button-select-intro").innerHTML="";
+            document.getElementById("sentence-intro").innerHTML=
+            document.getElementById("msgFormedSentence").innerHTML="";
+            document.getElementById("selectedWord").innerHTML ="";
+            document.getElementById("reformButton").innerHTML = "";
+            document.getElementById("check-correctness").innerHTML="";
+            document.getElementById("jumbled-words").innerHTML=" "
+            document.getElementById("correct").innerHTML="";
+            document.getElementById("wrong").innerHTML="";
+            document.getElementById("showAnswer").innerHTML="";
+            alert("Please Select A Language.");
+
+        }   
+}
+    //when word buttons are clicked then,adding message, adding word to sentence,adding Reform button,removing self button.
     var selectedSentence;
     function Bfunction(bid,bvalue)
         {
+           // console.log(bid,bvalue);
             document.getElementById("msgFormedSentence").innerHTML="Formed Sentence <span>(after selecting words):</span>";
             document.getElementById("selectedWord").innerHTML +=bvalue+" ";
             document.getElementById(bid).style.display="none";
             document.getElementById("reformButton").innerHTML = "<button class='reform' id='reform' onclick='reform()'> Re-form the sentence</button>";
             count++;
-
+            //console.log(count)
+    //to print check correctness button and storing all the selected words into a sentence
             if(wordcount==count && wordcount>0)
             {
                 selectedSentence = document.getElementById("selectedWord").innerHTML;
@@ -273,13 +309,13 @@ function selectLanguage(){
             }
             else{
                 document.getElementById("check-correctness").innerHTML="";   
-
             }
 
 
         }
     function reform()
-    {
+    {   //resets all displayed info
+        //console.log(reformButtons);
         document.getElementById("jumbled-words").innerHTML = reformButtons;
         document.getElementById("msgFormedSentence").innerHTML="";
         document.getElementById("selectedWord").innerHTML ="";
@@ -288,35 +324,34 @@ function selectLanguage(){
         document.getElementById("check-correctness").innerHTML="";
         document.getElementById("correct").innerHTML="";
         document.getElementById("wrong").innerHTML="";
-        document.getElementById("showAnswer").innerHTML="";
+        document.getElementById("showAnswer").innerHTML=""
 
     }
 
-        var answers="";
 
-        function check()
+    //to compare the selected sentence and the corpus sentence
+    var answers="";
+    function check()
     {
         var result= selectedSentence.trim();
-
+        
         if(language=='eng')
         {
             if (randomEnglish.includes(result))
             {
             document.getElementById("correct").innerHTML="Correct Answer!!!";
             document.getElementById("wrong").innerHTML="";
-            document.getElementById("showAnswer").innerHTML="";
+            document.getElementById("showAnswer").innerHTML=""
 
             }
             else{
                 document.getElementById("wrong").innerHTML="Wrong Answer !!!";
                 document.getElementById("correct").innerHTML="";
                 document.getElementById("showAnswer").innerHTML="<button id='show' onclick='show(this.id)'>Get Correct Sentence</button>"
-
             }
         }
         else if(language=='hindi')
-        {
-            var i=0;
+        {var i=0;
             result=result.trim();
             console.log(result)
             for(i=0;i<hindiALL.length;i++)
@@ -328,12 +363,12 @@ function selectLanguage(){
                     break;   
                 }    
             }
-
+            
             if(i==100)
             {
                 document.getElementById("correct").innerHTML="Correct Answer!!!";
                 document.getElementById("wrong").innerHTML="";
-                document.getElementById("showAnswer").innerHTML="";
+                document.getElementById("showAnswer").innerHTML=""
 
             }
             else{
@@ -343,15 +378,18 @@ function selectLanguage(){
 
             }
         }
-            function show(id)
+    }
+    //to display all answers when wrong sentence is selected
+
+    function show(id)
     {   var i=0;
         document.getElementById(id).style.display="none";
         document.getElementById("showAnswer").innerHTML="<button id='hide' onclick='toggle()'>Hide the Correct Sentences</button>"; 
+        //console.log(randomEnglish)
         answers="";
         if(language=="eng")
-        {
-            var l=randomEnglish.length;
-
+        {var l=randomEnglish.length;
+            //document.getElementById("showAnswer").innerHTML="<br>";
             for(i=0;i<l;i++)
             {  
                 console.log(randomEnglish[i])
@@ -376,6 +414,7 @@ function selectLanguage(){
         { 
             document.getElementById("showAnswer").innerHTML="";
             document.getElementById("showAnswer").innerHTML="<button id='hide' onclick='toggle()'>Get Answers</button>";
+           // document.getElementById("hide").innerHTML="Get Answers"
         }
         else
         {

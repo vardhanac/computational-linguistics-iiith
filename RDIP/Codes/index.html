@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title class="custom" id="page-title">Virtual Labs</title>
-        <link href="../style.css" rel="stylesheet">
-        <link class="custom" href="../../../src/lab/images/favicon.png" rel="shortcut icon"/>
-        <script src="../script.js"></script>
+        <link href="style.css" rel="stylesheet">
+        <link class="custom" href="../../src/lab/images/favicon.png" rel="shortcut icon"/>
+       
 
     </head>
     <body>
         <div class="container content">
-            <img src="../../Libraries/images/logo-img.jpg" alt="Virtual-Labs-IIIT-HYDERABAD" width="100%" >
+            <img src="../Libraries/images/logo-img.jpg" alt="Virtual-Labs-IIIT-HYDERABAD" width="100%" >
             <div class="lab-name">
                 <a href="#">COMPUTATIONAL LINGUISTICS LAB</a>
             </div>
@@ -24,26 +24,31 @@
                 <div class="container content-body">
                     
                     <div class="links" >                       
-                        <a href="#"><img src="../../Libraries/images/introduction.jpg"><p class="hov">INTRODUCTION</p> </a>
+                        <a href="#"><img src="../Libraries/images/introduction.jpg"><p class="hov">INTRODUCTION</p> </a>
                     </div>    
                     <div class="links" >                        
-                        <a href="#"><img src="../../Libraries/images/theory.jpg"><p class="hov">THEORY</p></a>
+                        <a href="#"><img src="../Libraries/images/theory.jpg"><p class="hov">THEORY</p></a>
                     </div>  
                     <div class="links" >                        
-                        <a href="#"><img src="../../Libraries/images/objective.jpg"><p class="hov">OBJECTIVE</p></a>
+                        <a href="#"><img src="../Libraries/images/objective.jpg"><p class="hov">OBJECTIVE</p></a>
                     </div> 
                     <div class="links" >                       
-                        <a href="#"><img src="../../Libraries/images/procedure.jpg"><p class="hov">PROCEDURE</p></a>
+                        <a href="#"><img src="../Libraries/images/procedure.jpg"><p class="hov">PROCEDURE</p></a>
                     </div>
                     <div class="links" >   
-                        <a href="#" ><img src="../../Libraries/images/simulation.jpg" ><p id="active"> EXPERIMENT</p></a>
+                        <a href="#" ><img src="../Libraries/images/simulation.jpg" ><p id="active"> EXPERIMENT</p></a>
                     </div>    
                     <div class="links" >                          
-                        <a href="#"><img src="../../Libraries/images/quizzes.jpg"><p class="hov">QUIZZES</p></a>
+                        <a href="#"><img src="../Libraries/images/quizzes.jpg"><p class="hov">QUIZZES</p></a>
                     </div>
 
 
+
+
+                    <!----------------------------------------Experiment Tab Body---------------------------------------------------->
+
                     <div>
+                        <!--dropdown for language selection-->
                     <p>Experiment</p>
                     <select id="select-lang" onchange="selectLanguage();">
                             <option value="def" >---Select Language---</option>
@@ -54,27 +59,34 @@
                    
 
                     <div class="general-text">
-
+                        <!-- to show message "Form a sentence (Declarative or Interrogative or any other type) from the given words-->
                         <p id="sentence-intro"></p>
-
+                        <!--(select the buttons in proper order)"-->
                         <span id="button-select-intro" style="margin-left:17%;"></span>   
                     </div>
                     <div id="jumbled-words">
 
                     </div>
+                    <!--to display message For-->
                     <p id='msgFormedSentence'></p>
+                    <!--to display word buttons-->
                     <p id="selectedWord"></p>
+                    <!--to display reform button-->
                     <div id="reformButton"></div>
+                    <!--to display check correctness button-->
                     <div id="check-correctness"></div>
+                    <!--to display correct statement-->
                     <p id="correct"></p>
+                    <!--to display wrong statement-->
                     <p id="wrong"></p>
-                    <div id="showAnswer"></div>
-
+                    <!--to display multiple correct answers-->
+                    <div id="showAnswer">
+                    </div>
 
                 </div>
             </div>
             
         </div>
-        <script src="../JS/script.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

@@ -14,6 +14,7 @@ p {
 .content{
     margin: -1% 17% 0% 15.5%;
 }
+
 .lab-name a{
     background-color: dodgerblue;
     font-weight: 600;
@@ -109,6 +110,7 @@ p {
  .general-text{
     margin: 0% 16%;
     padding:0%;
+    color:rgb(41, 41, 196);
  }
  #sentence-intro{
     font-weight: 600;
@@ -117,10 +119,11 @@ p {
  
  #jumbled-words,#selectedWord,#reformButton,#check-correctness,#showAnswer{
      text-align: center;
-     margin-top: 2%;
+     margin-top: 3%;
  }
  #selectedWord{
      font-size: 200%;
+     font-weight: 600;
      color:rgb(66, 62, 62);
  }
  .btn{
@@ -137,14 +140,14 @@ p {
      font-weight: 200;
  }
  #correct{
-     margin-top: 3%;
-     font-size: 160%;
+     margin-top: 2%;
+     font-size: 200%;
      color: green;
      text-align: center;
  }
  #wrong{
-     margin-top: 3%;
-     font-size: 160%;
+     margin-top: 2%;
+     font-size: 200%;
      color: red;
      text-align: center;
  }
